@@ -1,0 +1,2 @@
+#!/bin/sh
+xinput --list-props "ETPS/2 Elantech Touchpad"

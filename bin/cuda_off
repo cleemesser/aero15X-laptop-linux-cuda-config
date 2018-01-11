@@ -1,0 +1,4 @@
+#!/bin/sh
+# it is easy to turn off the gpu, just use optirun and it will return it to off afterwards
+optirun glxinfo > /dev/null
+cat /proc/acpi/bbswitch
