@@ -68,7 +68,8 @@ and sound working out of the box. It boots to the graphical display also without
 - Unigine Superposition, Version: 1.0, _Direct X_, 1920x1080 (1080p), fullscreen,  _High_ shaders, textures, DOF and Motion blur enabled, Windows 10 (build 16299)
   - Score: 7604, FPS: Min 45.12, Avg 56.87, Max 72.78, GPU *C: Min 45.0, Max 74.0, GPU Utilization: Max 100%
 
-
+- Unigine Valley Benchmark: custom preset Direct3D11 1920x1080 8xAA fullscreen Quality High
+  - Score 3306, FPS 79.0, Min FPS 21.6 Max FPS 133.2 
 
 
 #### Ongoing minor problems
