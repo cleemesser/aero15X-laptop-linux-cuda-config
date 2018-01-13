@@ -52,10 +52,23 @@ and sound working out of the box. It boots to the graphical display also without
 #### getting bumblebee+primus to work
 - did not work out of the box but with primus-problem-workaround.md adding to xorg.conf.nvidia
 - that works: Superposition runs (maybe intermittently) on medium setting, 9977; 
+  - this is about the same as under Windows a bit slower than under direct X but a bit faster that under OpenGL
 - Heaven 2852 OpenGL 1920x1080 8xAA fullscreen High Quality
 
 #### battery life with bumblebee 
 - battery life appears pretty great estimates are around 10hrs when editing files, running web browser in i3wm
+
+#### Benchmarks under Windows for comparison
+- Unigine Superposition, Version: 1.0, _Direct X_, 1920x1080 (1080p), fullscreen,  Medium shaders, textures, DOF and Motion blur enabled, Windows 10 (build 16299)
+  - score 10866, FPS min 62.83, Avg 81.28, Max 110.18; GPU *C: Min 41.0, Max 72.0, GPU Utilization: Max 99%
+  
+- Unigine Superposition, Version: 1.0, _OpenGL_, 1920x1080 (1080p), fullscreen,  Medium shaders, textures, DOF and Motion blur enabled, Windows 10 (build 16299)
+  - Score: 9553, FPS: Min 56.05 Avg 71.45, Max 87.55; GPU *C: Min 44.0, Max 74.0, GPU Utilization: Max 100%
+ 
+- Unigine Superposition, Version: 1.0, _Direct X_, 1920x1080 (1080p), fullscreen,  _High_ shaders, textures, DOF and Motion blur enabled, Windows 10 (build 16299)
+  - Score: 7604, FPS: Min 45.12, Avg 56.87, Max 72.78, GPU *C: Min 45.0, Max 74.0, GPU Utilization: Max 100%
+
+
 
 
 #### Ongoing minor problems
