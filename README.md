@@ -52,7 +52,7 @@ and sound working out of the box. It boots to the graphical display also without
 #### getting bumblebee+primus to work
 - did not work out of the box but with primus-problem-workaround.md adding to xorg.conf.nvidia
 - that works: Superposition runs (maybe intermittently) on medium setting, 9977; 
-  - this is about the same as under Windows a bit slower than under direct X but a bit faster that under OpenGL
+  - this is about the same as under Windows a bit lower than under direct X but a bit higher that under OpenGL
 - Heaven 2852 OpenGL 1920x1080 8xAA fullscreen High Quality
 
 #### battery life with bumblebee 
