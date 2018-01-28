@@ -36,9 +36,9 @@ and sound working out of the box. It boots to the graphical display also without
 ### overview of configuration
 - initially tried using default xenial repo without virtualgl following instructions here ***
 - able to use bbswitch to turn off nvidia and lower battery current draw (with grub modeline workaround)
-- primus bridge did not work to actually show 3D graphics using nvidia card
+- primus bridge did not work initially to actually show 3D graphics using nvidia card but with workaround (primus-problem-workaround) by editing the xorg.conf file it is working
 - Intel builtin gpu had glmark2 score of 530
-- cuda-8* works with TF and pytorch without 3D from nvidia via careful library manipulation and manual modprobe of nvidia* modules
+- cuda-8* works with tensorflow and pytorch without 3D from nvidia via careful library manipulation and manual modprobe of nvidia* modules
 
 
 #### adding virtualgl + testing repo for bumblebee
