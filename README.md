@@ -39,6 +39,7 @@ and sound working out of the box. It boots to the graphical display also without
 - primus bridge did not work initially to actually show 3D graphics using nvidia card but with workaround (primus-problem-workaround) by editing the xorg.conf file it is working
 - Intel builtin gpu had glmark2 score of 530
 - cuda-8* works with tensorflow and pytorch without 3D from nvidia via careful library manipulation and manual modprobe of nvidia* modules
+  - testing with nvidia driver 387 (387.26-1) now, originally started with 384 (384.111-1)
 
 
 #### adding virtualgl + testing repo for bumblebee
