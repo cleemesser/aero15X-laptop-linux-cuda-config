@@ -73,6 +73,7 @@ and sound working out of the box. It boots to the graphical display also without
 
 
 #### Ongoing minor problems
+- keyboard sometime double strikes, that is "aa" instead of "a" -- this seems to be less of a problem as time goes on but it still occurs :-( Happens under windows as well.
 - bumblebeed fails when it first tries to start but works fine when started manually
 - need to use "light" utility to adjust backlight when in i3 wm because the various Fn+Fx keys are not picked up with the default 105 key keyboard as configured. Not picked up by ev, evtest, or acpi_listen
 - the touchpad gets activated a lot when I am typing, making things jump around. Actually helps if I lean my palms onto it. Can turn off touchpad and use mouse for more serious typing (libinput in use)
