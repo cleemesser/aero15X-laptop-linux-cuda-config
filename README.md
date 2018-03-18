@@ -6,6 +6,16 @@ It features big battery, thin body and a maxQ 1070 GTX GPU.
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
 and sound working out of the box. It boots to the graphical display also without problems.
 
+### Update 3/2018:
+ - updated to kernel 4.13 using ubuntu hwe (4.10 is not receiving security updates)
+ - updated cuda as nvidia is now supporting kernel 4.13
+ - will add more details but configuration is otherwise similar
+ - typical usage for linux is still touchy:
+   - boot to text mode -> startx with nvidia gpu ON (output of cat /proc/acpi/bbswitch) 
+   - if operating off battery then use bbswitch (or simply activate bumblebee - sudo service bumblebeed start) to give long battery life
+   - works best if manually suspend using sudo pm-suspend or get lockups sometimes; 
+     - suspect lid button activating susupend needs to turn gpu back on 
+
 ## Details
 - product: P65Q
 - AMI (american megatrends inc) BIOS version FB01 (9/1/2017)
