@@ -6,6 +6,8 @@ It features big battery, thin body and a maxQ 1070 GTX GPU.
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
 and sound working out of the box. It boots to the graphical display also without problems.
 
+### Update 4/5/2018
+ - tried using macbook usb-c adapter to add second display (after failure using builtin HDMI and mini-displayport) and it works right out of the box with lightdm/xubuntu.
 ### Update 3/2018:
  - updated to kernel 4.13 using ubuntu hwe (4.10 is not receiving security updates)
  - updated cuda as nvidia is now supporting kernel 4.13
