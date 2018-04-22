@@ -70,7 +70,8 @@ and sound working out of the box. It boots to the graphical display also without
 
 - went ahead and installed all dependencies for virtualgl (a lot!) this time
 - now it auto-selects virtualgl bridge and I can see 3D stuff on screen using nvidia card :-)
-- it is still relatively slow
+- glxspheres64 speeds up from 47 Mpixels/s (intel) to 470 Mpixels/sec
+- it is still relatively little increase in framerates for benchmarks limited by nvidia->intel bandwidth
   - using proxy (no compression) "optirun glmark2" score after last test is 830 (expected is >2000 for native performance)
   - some of the other tests list some slightly high frame rates/scores. I assume these are somewhat limited by what the intel card and transport can provide.
   - the demos/tests look smooth.
