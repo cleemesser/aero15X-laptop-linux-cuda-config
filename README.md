@@ -6,6 +6,11 @@ It features big battery, thin body and a maxQ 1070 GTX GPU.
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
 and sound working out of the box. It boots to the graphical display also without problems.
 
+### Update 4/22/2018
+
+- I updated the keyboard firmware yesterday under windows and tested a few thousand keypresses and got no double outputs
+- Note, at some point, perhaps when I updated to kernel 4.13, I also updated the nvidia drivers to 3.90, from 3.87, working fine with this, added config files to repo to reflect this.
+
 ### Update 4/5/2018
 
  - tried using macbook usb-c adapter to add second display (after failure using builtin HDMI and mini-displayport) and it works right out of the box with lightdm/xubuntu. Works with two brands so far, the first one we are not sure (no label) the second one is the Cable Matters USB-C Multiport adapter with ethernet model 201014-BLK. It suport VGA at 1040p@60Hz and 4k@30Hz via HDMI. The usb port and ethernet port work as well. It uses a DisplayLink chip I think.
@@ -15,11 +20,12 @@ and sound working out of the box. It boots to the graphical display also without
  - updated to kernel 4.13 using ubuntu hwe (4.10 is not receiving security updates) so 4.13-38 is my current one
  - updated cuda as nvidia is now supporting kernel 4.13
  - will add more details but configuration is otherwise similar
- - typical usage for linux is still touchy:
+ - typical usage for linux is still sometimes touchy:
    - boot to text mode -> startx with nvidia gpu ON (output of cat /proc/acpi/bbswitch) 
    - if operating off battery then use bbswitch (or simply activate bumblebee - sudo service bumblebeed start) to give long battery life
    - works best if manually suspend using sudo pm-suspend or get lockups sometimes; 
      - suspect lid button activating susupend needs to turn gpu back on 
+   - work-around: write script gui-start to standardize starting X - make sure nvidia is on before starting, then immediately turn off
 
 ## Details
 
