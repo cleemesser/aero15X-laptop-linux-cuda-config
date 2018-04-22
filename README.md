@@ -1,6 +1,6 @@
 # running linux on the aero 15X laptop
 
-This is high end laptop released from Gigabyte in late 2017.
+This is high end laptop released from Gigabyte in late 2017 with the Intel i7-7700HQ (4 core)
 It features big battery, thin body and a maxQ 1070 GTX GPU. 
 
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
