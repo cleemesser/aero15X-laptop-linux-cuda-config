@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#sudo service bumblebeed restart
+sudo service bumblebeed restart
+# first turn on nvidia before starting X or it locks up
+sudo tee /proc/acpi/bbswitch <<<ON
+# startx
+# or use lightdm
+sudo service lightdm start
+# then can turn it off again
+
+# Don't forget to turn off after X is running
+

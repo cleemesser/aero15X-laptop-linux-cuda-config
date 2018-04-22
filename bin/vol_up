@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+amixer -D pulse sset Master 5%+
+echo "see also alsamixer"
+# pactl set-sink-volume 0 +5%

@@ -1,0 +1,3 @@
+#!/bin/sh
+light -S 80
+

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# turn off nvidia device via bbswitch
+sudo tee /proc/acpi/bbswitch <<<OFF
+cat /proc/acpi/bbswitch
+
