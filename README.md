@@ -8,7 +8,7 @@ and sound working out of the box. It boots to the graphical display also without
 
 ### Update 4/5/2018
 
- - tried using macbook usb-c adapter to add second display (after failure using builtin HDMI and mini-displayport) and it works right out of the box with lightdm/xubuntu. Works with two brands so far, the first one we are not sure (no label) the second one is the Cable Matters USB-C Multiport adapter with ethernet model 201014-BLK. It suport VGA at 1040p@60Hz and 4k@30Hz. The usb port and ethernet port work as well. It uses a DisplayLink chip I think.
+ - tried using macbook usb-c adapter to add second display (after failure using builtin HDMI and mini-displayport) and it works right out of the box with lightdm/xubuntu. Works with two brands so far, the first one we are not sure (no label) the second one is the Cable Matters USB-C Multiport adapter with ethernet model 201014-BLK. It suport VGA at 1040p@60Hz and 4k@30Hz via HDMI. The usb port and ethernet port work as well. It uses a DisplayLink chip I think.
 
 ### Update 3/2018:
 
