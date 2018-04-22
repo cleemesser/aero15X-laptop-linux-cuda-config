@@ -63,7 +63,7 @@ and sound working out of the box. It boots to the graphical display also without
 - primus bridge did not work initially to actually show 3D graphics using nvidia card but with workaround (primus-problem-workaround) by editing the xorg.conf file it is working
 - Intel builtin gpu had glmark2 score of 530
 - cuda-8* works with tensorflow and pytorch without 3D from nvidia via careful library manipulation and manual modprobe of nvidia* modules
-  - testing with nvidia driver 387 (387.26-1) now, originally started with 384 (384.111-1)
+  - nvidia driver 390 now, originally started with 384 (384.111-1) then 387 (387.26-1)
 
 
 #### adding virtualgl + testing repo for bumblebee
@@ -116,5 +116,8 @@ and sound working out of the box. It boots to the graphical display also without
 
 #### cuda use
 
-- use pytorch 0.3, tensorflow 1.4.1 in conda envs
+- use pytorch 0.3, tensorflow 1.4.1 in conda envs with cuda 8.0
+- need to be careful that all the right libraries are on LD_LIBRARY_PATH and CUDA_ROOT is set correctly
 - use bin/cuda_on bin/cuda_off to turn on/off nvidia gpu for cuda use on battery power manually
+- or use "optirun -b none" to run without any transport for graphical output
+- testing cuda 9.0/9.1 - use nvidia "run" file distributions to get these while keeping cuda 8.0 installed as well
