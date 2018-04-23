@@ -8,7 +8,7 @@ and sound working out of the box. It boots to the graphical display also without
 
 ### Update 4/22/2018
 
-- I updated the keyboard firmware yesterday under windows and tested a few thousand keypresses and got no double outputs
+- I updated the keyboard firmware yesterday under windows "smart update" utility (FW 3.0.8) and tested a few thousand keypresses and got no double outputs :-) Not sure if the firmware made any difference or if I just sometimes double strike myself on this keyboard and did not do any when i was being careful. 
 - Note, at some point, perhaps when I updated to kernel 4.13, I also updated the nvidia drivers to 3.90, from 3.87, working fine with this, added config files to repo to reflect this.
 
 ### Update 4/5/2018
