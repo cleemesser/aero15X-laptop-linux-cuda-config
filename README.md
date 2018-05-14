@@ -118,3 +118,4 @@ and sound working out of the box. It boots to the graphical display also without
 
 - use pytorch 0.3, tensorflow 1.4.1 in conda envs
 - use bin/cuda_on bin/cuda_off to turn on/off nvidia gpu for cuda use on battery power manually
+- added additional cuda libraries for simulatenous 8.0, 9.0 and 9.1 via ".run" file distribution cuda sdk so as not to interfere with deb based system
