@@ -37,7 +37,7 @@ sudo apt install emacs25
 ```
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash ~/Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/anaconda3
-echo 'export PATH="$HOME/anaconda3/bin:$PATH' >> ~/.bashrc
+echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bashrc
 ```
 - for full anaconda version: https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh
 - wget https://repo.continuum.io/miniconda/Miniconda3-3.7.0-Linux-x86_64.sh -O ~/miniconda.sh
@@ -45,6 +45,6 @@ echo 'export PATH="$HOME/anaconda3/bin:$PATH' >> ~/.bashrc
 
 ### add ~/bin to path
 ```
-   echo export PATH="$HOME/bin:$PATH" >> ~/.bashrc
+   echo export 'PATH="$HOME/bin:$PATH"' >> ~/.bashrc
 ```
 ### set up bumbblebee/bbswitch
