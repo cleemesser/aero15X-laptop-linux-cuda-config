@@ -83,3 +83,13 @@ options nouveau modeset=0
 " >> /etc/modprobe.d/blacklist.conf
 ```
 - this is also stored
+
+```
+sudo cat aero15X-laptop-linux-cuda-config/etc/modules >> /etc/modules
+```
+
+### install rclone
+- this is not safe rlcone 1.4.x
+```
+curl https://rclone.org/install.sh | sudo bash
+```
