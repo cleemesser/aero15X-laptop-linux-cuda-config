@@ -1,7 +1,6 @@
-# /etc/modules: kernel modules to load at boot time.
-#
-# This file contains the names of kernel modules that should be loaded
-# at boot time, one per line. Lines beginning with "#" are ignored.
+# setup for aero 15X (2017)
+
+blacklist nouveau
 
 blacklist nvidia_384_drm
 blacklist nvidia_384_uvm
