@@ -28,3 +28,11 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh
 
 ### set up bumbblebee/bbswitch
+```
+sudo service lightdm stop
+sudo apt-get remove --purge nvidia*
+sudo apt-get remove --purge bumblebee*
+sudo apt-get --purge remove xserver-xorg-video-nouveau*
+
+sudo apt install bbswitch
+```
