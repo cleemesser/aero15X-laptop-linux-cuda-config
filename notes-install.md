@@ -61,6 +61,9 @@ conda install -n base nb_conda_kernels
 ```
    echo export 'PATH="$HOME/bin:$PATH"' >> ~/.bashrc
 ```
+
+## Cuda and bumblebee setup
+
 ### set up bumbblebee/bbswitch
 ```
 sudo service lightdm stop
@@ -70,8 +73,15 @@ sudo apt-get --purge remove xserver-xorg-video-nouveau*
 
 sudo apt install bbswitch
 ```
-
+### add the following two lines to /etc/modules
 ```
+i915
+bbswitch
+```
+### make sure that there is a a softlink
+modules-load.d/modules.conf -> /etc/modules
+- this already exists on ubuntu 16.04
+
 # Blacklisting nouveau to get nvidia running with bumblebee
 ```
 sudo echo "
@@ -83,11 +93,39 @@ options nouveau modeset=0
 " >> /etc/modprobe.d/blacklist.conf
 ```
 - this is also stored so can try this from the repo instead
+- may need to update this as nvidia comes out with fresher kernels. Make sure the installed one is blacklisted
 
 ```
 sudo cat aero15X-laptop-linux-cuda-config/etc/modules >> /etc/modules
 ```
 
+### install a cuda toolkit (I choose an older one so that my run file can use a newer one
+- acutally did this from aptitude but can do
+```
+sudo apt-get install cuda-8-0
+```
+
+### Install Bumblebee
+```
+sudo service lightdm stop
+sudo apt-get install --no-install-recommends bumblebee
+sudo apt-get install bumblebee-nvidia primus
+```
+- note alternative to primus is "virtualgl" package (which I used at another prior time, so might need again)
+- note on my laptop get message "Selectiong 01:00:0 as discrete nvidia card" edit the BusID line in /etc/bumblebee/xorg.conf.nouveau if this is wrong
+
+### configure Bumblebee
+- add the following two lines to /etc/modules
+```
+i915
+bbswitch
+```
+
+### blacklist nivida from loading
+
+
+
+---------------------------------------------
 ### install rclone
 - this is not safe rlcone 1.4.x
 ```
