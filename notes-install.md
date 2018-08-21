@@ -82,7 +82,7 @@ alias lbm-nouveau off
 options nouveau modeset=0
 " >> /etc/modprobe.d/blacklist.conf
 ```
-- this is also stored
+- this is also stored so can try this from the repo instead
 
 ```
 sudo cat aero15X-laptop-linux-cuda-config/etc/modules >> /etc/modules
@@ -92,4 +92,35 @@ sudo cat aero15X-laptop-linux-cuda-config/etc/modules >> /etc/modules
 - this is not safe rlcone 1.4.x
 ```
 curl https://rclone.org/install.sh | sudo bash
+```
+
+### install icaclient (Citrix) 13.1
+```
+sudo dpkg --add-architecture i386
+sudo apt-get update
+```
+
+- went to https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html and got icaclient_13.10.0.20_amd64.deb
+
+- Optionally download the "USB Support Package". This package provides support for passing USB devices from your local Ubuntu machine into the remote Windows session (if your Citrix server is configured to allow that).
+```
+sudo dpkg -i ~/Downloads/icaclient_*.deb ctxusb_*.deb
+sudo apt-get -f install  # Install dependencies and finish configuring the package(s)
+```
+
+- add more SSL certificates
+```
+sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
+sudo c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+```
+
+- to use in chrome and/or chromium, you might need to do the below, but it may be set already by the deb package (it was for me) in ~/.local/share/applications:/mimeapps.list
+```
+xdg-mime default wfica.desktop application/x-ica
+```
+Contents of the file:
+```
+[Default Applications]
+application/x-ica=wfica.desktop
+application/vnd.citrix.receiver.configure=new_store.desktop
 ```
