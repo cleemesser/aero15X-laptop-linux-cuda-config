@@ -123,8 +123,27 @@ bbswitch
 
 ### blacklist nivida from loading
 
+### whole section on editing
+- xorg.conf.nvidia
+- /etc/bumblebee/bumblebee.conf
+- /etc/X11/xorg.conf
 
+### Update alternatives
+```
+sudo update-alternatives --config x86_64-linux-gnu_gl_conf
+sudo update-alternatives --config x86_64-linux-gnu_egl_conf
+sudo update-alternatives --config i386-linux-gnu_gl_conf
+sudo update-alternatives --config i386-linux-gnu_egl_conf
 
+```
+Select the mesa option where available, if not available, keep existing setting.
+Note difference in my system (possibly because enabled multiarch for citrix, I do have a mesa option for one of the i386 options
+
+```
+sudo update-initramfs -u -k all
+sudo usermod -a -G bumblebee $USER
+sudo apt-get remove nvidia-prime
+```
 ---------------------------------------------
 ### install rclone
 - this is not safe rlcone 1.4.x
