@@ -1,0 +1,52 @@
+# cwl setup cuda
+# cuda-8-0 installed from apt repo to get all the requirements
+# note CUDA 7 or 8 (?) does not support gcc beyond 4.9 and anaconda is built with 4.8
+# so also apt install gcc-4.8
+
+export _PRE_CUDA_PATH="$PATH"
+export _PRE_CUDA_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
+
+NV_DRV=396
+function use_nvidialibs() {
+    # this I think is necessary for graphics but not for cuda?
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/nvidia-$NV_DRV"
+}
+
+
+# function use_cuda91 () {
+#     # CUDA Version 9.1.85, patched to 9.1.85.3
+#     # reset things, so can't use this convenience function if you
+#     # are manipulating paths after the _PRE_CUDA_* variable are defined
+#     # unless you are updating them too
+
+#     export CUDA_ROOT="/usr/local/cuda-9.1"
+#     export LD_LIBRARY_PATH="$CUDA_ROOT/lib64:$_PRE_CUDA_LD_LIBRARY_PATH:$CUDA_ROOT/extras/CUPTI/lib64"
+#     export PATH="$CUDA_ROOT/bin:$_PRE_CUDA_PATH"
+#     # probably ok to use gcc-5.4 which is default on ubuntu 16.04
+#     export CC=gcc-4.8
+#     export CXX=g++-4.8
+
+# }
+
+
+function use_cuda80 () {
+    # CUDA Version 8.0.44 currently installed /usr/local/cuda-8.0/version.txt
+    export CUDA_ROOT="/usr/local/cuda-8.0"
+    export LD_LIBRARY_PATH="$CUDA_ROOT/lib64:$CUDA_ROOT/extras/CUPTI/lib64"
+    export PATH="$CUDA_ROOT/bin:$_PRE_CUDA_PATH"
+    export CC=gcc-4.8
+    export CXX=g++-4.8
+}
+
+function use_cuda90 () {
+    # CUDA Version 9.0.176 currently installed /usr/local/cuda-9.0/version.txt
+    export CUDA_ROOT="/usr/local/cuda-9.0"
+    export LD_LIBRARY_PATH="$CUDA_ROOT/lib64:$CUDA_ROOT/extras/CUPTI/lib64"
+    export PATH="$CUDA_ROOT/bin:$_PRE_CUDA_PATH"
+    export CC=gcc-5
+    export CXX=g++-5
+}
+
+# can control which cuda device to use in pytorch with 
+# export CUDA_VISIBLE_DEVICE=0,1  # or 1
+
