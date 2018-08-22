@@ -104,6 +104,31 @@ sudo cat aero15X-laptop-linux-cuda-config/etc/modules >> /etc/modules
 ```
 sudo apt-get install cuda-8-0
 ```
+```
+### install cuda-9.0
+- I did not purge the prior cuda install, with
+```sudo apt-get purge cuda
+sudo apt-get purge libcudnn6
+sudo apt-get purge libcudnn6-dev
+```
+Suggestion for installing CUDA-9.0 with cudnn 7.0.5 but I actually installed cudnn 7.2
+```
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7-dev_7.0.5.15-1+cuda9.0_amd64.deb
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libnccl2_2.1.4-1+cuda9.0_amd64.deb
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libnccl-dev_2.1.4-1+cuda9.0_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+sudo dpkg -i libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
+sudo dpkg -i libcudnn7-dev_7.0.5.15-1+cuda9.0_amd64.deb
+sudo dpkg -i libnccl2_2.1.4-1+cuda9.0_amd64.deb
+sudo dpkg -i libnccl-dev_2.1.4-1+cuda9.0_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda=9.0.176-1
+sudo apt-get install libcudnn7-dev
+sudo apt-get install libnccl-dev
+```
+
 
 ### Install Bumblebee
 ```
@@ -131,19 +156,77 @@ bbswitch
 ### Update alternatives
 ```
 sudo update-alternatives --config x86_64-linux-gnu_gl_conf
-sudo update-alternatives --config x86_64-linux-gnu_egl_conf
+sudo update-alternatives --config x86_64-linux-gnu_egl_confo
 sudo update-alternatives --config i386-linux-gnu_gl_conf
 sudo update-alternatives --config i386-linux-gnu_egl_conf
 
 ```
+# sudo update-alternatives --config x86_64-linux-gnu_gl_conf /usr/lib/x86_64-linux-gnu/mesa/ld.so.conf
 Select the mesa option where available, if not available, keep existing setting.
 Note difference in my system (possibly because enabled multiarch for citrix, I do have a mesa option for one of the i386 options
+```
+|Info: the current GL alternatives in use are: ['mesa', 'mesa']
+
+|Info: the current EGL alternatives in use are: ['mesa-egl', 'nvidia-396']
+```
 
 ```
 sudo update-initramfs -u -k all
 sudo usermod -a -G bumblebee $USER
 sudo apt-get remove nvidia-prime
 ```
+- not sure why the removal of nvidia-prime
+
+note at this point can reboot but nvidia modules are not unloaded
+- see "sudo service bumblebeed status"
+- can do this by hand:
+```
+rmmod nvidia_modeset
+rmmod nvidia_uvm
+rmmod nvidia_drm
+rmmod nvidia
+```
+- then restart
+```
+sudo service bumblebeed restart
+```
+and it's turned off
+
+#### next problem, started X and logged in and then with optinrun -vv glxgears got
+```
+optirun Error : Xlib: extension "GLX" missing on display ":8"."
+```
+
+Notes on resolving this issue:
+- https://github.com/Bumblebee-Project/Bumblebee/issues/951
+- primusrun
+- prime-select intel <- will switch libraries via update-alternatives as mess up the changes done above
+
+- https://github.com/Bumblebee-Project/Bumblebee/issues/759
+- do the below but change "364" to "396"
+```
+After many hours of trial, I finally get a solution for "optirun Error : Xlib: extension "GLX" missing on display ":8"."
+For NVIDIA-364 driver
+
+add these lines in /etc/modprobe.d/bumblebee.conf [ These will make bbswitch work properly with nvidia-364 ]
+alias nvidia-drm nvidia_364_drm
+alias nvidia-uvm nvidia_364_uvm
+alias nvidia-modeset nvidia_364_modeset
+remove nvidia rmmod nvidia-drm nvidia-modeset nvidia-uvm nvidia
+
+correct x86_64-linux-gnu_gl_conf and and i386-linux-gnu_gl_conf path - run these command
+sudo update-alternatives --config x86_64-linux-gnu_gl_conf [Choose the one with /usr/lib/x86_64-linux-gnu/mesa/ld.so.conf]
+sudo update-alternatives --config x86_64-linux-gnu_egl_conf [Choose the one with /usr/lib/x86_64-linux-gnu/mesa-egl/ld.so.conf]
+sudo update-alternatives --config i386-linux-gnu_gl_conf [ Same as above ]
+sudo update-alternatives --config i386-linux-gnu_egl_conf
+
+add these line
+add /usr/lib/nvidia-364 to => /usr/lib/x86_64-linux-gnu/mesa/ld.so.conf
+add /usr/lib32/nvidia-364 to => /usr/lib/i386-linux-gnu/mesa/ld.so.conf
+sudo ldconfig
+try to run glxinfo & optirun glxinfo to check that all the configurations are correct
+```
+
 ---------------------------------------------
 ### install rclone
 - this is not safe rlcone 1.4.x
@@ -181,3 +264,28 @@ Contents of the file:
 application/x-ica=wfica.desktop
 application/vnd.citrix.receiver.configure=new_store.desktop
 ```
+
+### install crashplan or some backup
+- see notes in "CrashPlanStanford-linux" folder
+
+
+fixing the inotify hogging from crashplan
+------------------------------------------
+- you need to do this after installing crashplan at least on ubuntu 16.04
+- get problems like things not working after installing crashplan?
+  - get stufflike systemd-ask-password no space left on device?
+::
+    # fix it temporarily
+    sudo -i
+    echo 1048576 > /proc/sys/fs/inotify/max_user_watches
+
+    # and make the change on reboot
+    echo "fs.inotify.max_user_watches=1048576" >> /etc/sysctl.conf
+    exit
+  
+
+
+setting the default target on systemd/ubuntu 16.04
+--------------------------------------------------
+::
+  sudo systemctl set-default multi-user.target
