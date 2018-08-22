@@ -111,7 +111,7 @@ sudo apt-get install cuda-8-0
 sudo apt-get purge libcudnn6
 sudo apt-get purge libcudnn6-dev
 ```
-Suggestion for installing CUDA-9.0 with cudnn 7.0.5 but I actually installed cudnn 7.2
+Suggestion for installing CUDA-9.0 with cudnn 7.0.5 but I actually installed cudnn 7.2 - TODO: update for current 7.2 version
 ```
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
@@ -227,7 +227,12 @@ sudo ldconfig
 try to run glxinfo & optirun glxinfo to check that all the configurations are correct
 ```
 
----------------------------------------------
+#### Fix ups:
+- seemed that ubuntu install of nvidia-396 driver did not include nvidia-smi util, grabbed .run file and extract nvidia-smi from it and put int /usr/bin, seems like a likely bug
+
+
+## Non-cuda setup
+
 ### install rclone
 - this is not safe rlcone 1.4.x
 ```
@@ -289,3 +294,32 @@ setting the default target on systemd/ubuntu 16.04
 --------------------------------------------------
 ::
   sudo systemctl set-default multi-user.target
+
+
+#### install i3 tiling window manager
+- useful tiling window manager 
+  - W-S-e exits, W-d allows to select a command to run, W-return opens terminal
+```
+sudo apt-get install i3-wm
+```
+- I seem to remember other customization but this is a good start
+
+#### adjust power use when using battery
+```
+sudo powertop --auto-tune
+```
+
+
+#### turn on and off touchpad
+```
+xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 0 # turn off
+xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1 # turn on
+```
+- created touchpad_on/off scripts for this
+#### volume up and down
+```
+#!/usr/bin/env sh
+amixer -D pulse sset Master 5%+
+echo "see also alsamixer"
+# pactl set-sink-volume 0 +5%
+```
