@@ -1,4 +1,12 @@
-# setup for aero 15X (2017)
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with "#" are ignored.
+
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with "#" are ignored.
 
 blacklist nouveau
 
@@ -11,17 +19,29 @@ blacklist nvidia_387_drm
 blacklist nvidia_387_uvm
 blacklist nvidia_387_modeset
 blacklist nvidia_387
-
+# 390
 blacklist nvidia_390_drm
 blacklist nvidia_390_uvm
 blacklist nvidia_390_modeset
 blacklist nvidia_390
 
+# 396
+blacklist nvidia_396_drm
+blacklist nvidia_396_uvm
+blacklist nvidia_396_modeset
+blacklist nvidia_396
+
+# generic
 blacklist nvidia_drm
 blacklist nvidia_uvm
 blacklist nvidia_modeset
 blacklist nvidia
-bbswitch
+
+## actively add these
+
+bbswitch load_state=0 unload_state=1
+i915
+
 # option load_state=1 (-1,0,1)
 # option unload_state=1
 
