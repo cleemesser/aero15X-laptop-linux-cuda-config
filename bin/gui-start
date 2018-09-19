@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 #sudo service bumblebeed restart
+nvidia-rmmod
 sudo service bumblebeed restart
+
 # first turn on nvidia before starting X or it locks up
-sudo tee /proc/acpi/bbswitch <<<ON
+# sudo tee /proc/acpi/bbswitch <<<ON
 # startx
 # or use lightdm
 sudo service lightdm start
