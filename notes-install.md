@@ -76,9 +76,11 @@ sudo apt install bbswitch
 ### add the following two lines to /etc/modules
 ```
 i915
-bbswitch
+bbswitch load_state=0 unload_state=1
 ```
-### make sure that there is a a softlink
+- the load_state=0 tells the module to turn things off when it is loaded
+- and unload_state=1 tells it to turn it back on if it is unloaded
+### make sure that there is a a softlink (so XXX knows to load things)
 modules-load.d/modules.conf -> /etc/modules
 - this already exists on ubuntu 16.04
 
@@ -143,9 +145,14 @@ sudo apt-get install bumblebee-nvidia primus
 - add the following two lines to /etc/modules
 ```
 i915
-bbswitch
+bbswitch load_state=0 unload_state=1
 ```
-
+question do I need to set bbswitch options?
+The Lenovo T410 and Lenovo T410s laptops need the module option skip_optimus_dsm=1, otherwise it will detect the wrong methods which result in the card not being disabled.
+for example:
+```
+bbswitch load_state=0 unload_state=1
+```
 ### blacklist nivida from loading
 
 ### whole section on editing
@@ -322,4 +329,16 @@ xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1 # turn on
 amixer -D pulse sset Master 5%+
 echo "see also alsamixer"
 # pactl set-sink-volume 0 +5%
+```
+
+
+### i3 wm install
+- i3wm.org recommends using their repo
+```
+$ /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
+sudo -i
+dpkg -i ./keyring.deb
+echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" >> /etc/apt/sources.list.d/sur5r-i3.list
+apt update
+apt install i3
 ```

@@ -1,0 +1,6 @@
+#!/bin/sh
+# for multi monitor stuff xubuntu has autoconfig
+# for i3wm though you may need to do it via xrandr
+# by itself xandr will display the state of the displays :-)
+# to 
+xrandr --output VGA1 --auto --left-of LVDS1
