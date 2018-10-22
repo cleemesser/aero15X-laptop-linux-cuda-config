@@ -1,2 +1,3 @@
 #!/bin/sh
 xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 0
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Detection" 1

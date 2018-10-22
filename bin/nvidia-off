@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# turn off nvidia device via bbswitch
-sudo tee /proc/acpi/bbswitch <<<OFF
+# try to clear modules and restart bumblebeed
+rmmod nvidia_drm 
+rmmod nvidia_modeset
+rmmod nvidia_uvm 
+rmmod nvidia
+service bumblebeed restart
+# sudo tee /proc/acpi/bbswitch <<<OFF # turn off nvidia device via bbswitch
 cat /proc/acpi/bbswitch
 
