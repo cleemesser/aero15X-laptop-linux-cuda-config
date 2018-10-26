@@ -2,3 +2,10 @@
 xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1
 xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Detection" 1
 # not sure if other things like noise cancellation would be useful
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Two-Finger Scrolling" 0, 0
+# low, high, press
+# Finger originally was 1, 1, 0
+# xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 50, 90, 255 # too high
+#xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 10, 20, 30
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 20, 40, 90
+
