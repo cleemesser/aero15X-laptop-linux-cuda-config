@@ -1,9 +1,16 @@
 #!/bin/bash
 # needs to be run via sudo because manipulates kernel stuff
+export NVIDIA_MODULE=nvidia_418
+export NVIDIA_UVM=nvidia_418-uvm
+export NVIDIA_DRM=nvidia_418_drm
+export NVIDIA_LIBRARIES=/usr/lib/nvidia-418
+
 echo "ON" > /proc/acpi/bbswitch
 
 #/sbin/modprobe nvidia_384
-/sbin/modprobe nvidia_387
+#/sbin/modprobe nvidia_387
+echo /sbin/modprobe "$NVIDIA_MODULE"
+/sbin/modprobe "$NVIDIA_MODULE"
 
 if [ "$?" -eq 0 ]; then
   # Count the number of NVIDIA controllers found.
@@ -23,7 +30,7 @@ else
 fi
 
 #/sbin/modprobe nvidia_384-uvm
-/sbin/modprobe nvidia_387-uvm
+/sbin/modprobe $NVIDIA_UVM
 
 if [ "$?" -eq 0 ]; then
   # Find out the major device number used by the nvidia-uvm driver
@@ -38,11 +45,11 @@ fi
 
 # add this to see if it helps - not sure yet
 ##/sbin/modprobe nvidia_384_drm
-/sbin/modprobe nvidia_387_drm
+/sbin/modprobe $NVIDIA_DRM
 
 
 function use_nvidialibs() {
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/nvidia-387"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$NVIDIA_LIBRARIES"
 }
 
 # use nvidia libs as well
