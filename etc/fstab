@@ -1,0 +1,22 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/nvme1n1p3 during installation
+UUID=5a45939d-ceed-435b-a296-c032d37dfe95 /               ext4    errors=remount-ro 0       1
+# /boot/efi was on /dev/nvme0n1p2 during installation
+UUID=4C16-1B3F  /boot/efi       vfat    umask=0077      0       1
+# swap was on /dev/nvme1n1p2 during installation
+#UUID=027f1394-0439-4f95-985a-e0be89d31d2b none            swap    sw              0       0
+/dev/mapper/cryptswap1 none swap sw 0 0
+
+# $ blkid
+# /dev/nvme0n1p1: LABEL="Recovery" UUID="8CE4153FE4152D48" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="1bd40f4b-a32c-45f6-acb3-d220f9119b5c"
+# /dev/nvme0n1p2: UUID="4C16-1B3F" TYPE="vfat" PARTLABEL="EFI system partition" PARTUUID="5ae2337f-2501-4b4b-9d80-d3f056523148"
+# /dev/nvme0n1p5: LABEL="RecoveryImage" UUID="DCF2B34CF2B329A2" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="18ae84df-b9a4-49a1-8c01-e9f32f286dcd"
+# /dev/nvme1n1p1: UUID="2594-EA83" TYPE="vfat" PARTUUID="8b98061a-f51e-4911-8dbc-ecfdaae52018"
+# /dev/nvme1n1p3: UUID="5a45939d-ceed-435b-a296-c032d37dfe95" TYPE="ext4" PARTUUID="360669a5-13d3-493b-878d-ea0d76b1c013"
+# /dev/sdb1: LABEL="POP_OS 18_0" UUID="0001-713B" TYPE="vfat" PARTUUID="004aed84-01"
