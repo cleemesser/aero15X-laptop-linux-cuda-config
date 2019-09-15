@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# turn on nvidia device via bbswitch
+# load all graphics drivers (vs just what is needed for cuda)
+
+# service bumblebeed restart # used on 16.04
+# not clear if this is needed when booting up
+sudo modprobe bbswitch  # make sure it is loaded
+sudo tee /proc/acpi/bbswitch <<<ON # turn off nvidia device via bbswitch
+cat /proc/acpi/bbswitch
+
+sudo modprobe nvidia_drm nvidia_modesetd nvidia_uvm nvidia
