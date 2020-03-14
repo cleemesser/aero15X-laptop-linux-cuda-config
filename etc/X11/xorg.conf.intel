@@ -1,0 +1,16 @@
+Section "ServerLayout"
+    Identifier "layout"
+    Screen 0 "intel"
+EndSection
+
+Section "Device"
+    Identifier "intel"
+    Driver "modesetting"
+    BusID "PCI:0@0:2:0"
+    Option "AccelMethod" "SNA"
+EndSection
+
+Section "Screen"
+    Identifier "intel"
+    Device "intel"
+EndSection
