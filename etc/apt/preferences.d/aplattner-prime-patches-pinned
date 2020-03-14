@@ -1,0 +1,3 @@
+Package: *
+Pin: release o=LP-PPA-aplattner
+Pin-Priority: 501
