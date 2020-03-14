@@ -3,3 +3,15 @@ https://gist.github.com/Garoe/74a0040f50ae7987885a0bebe5eda1aa
 will need to set
 export IGNORE_CC_MISMATCH=1
 
+
+Linux journal has a article on how to do signing
+https://www.linuxjournal.com/content/take-control-your-pc-uefi-secure-boot
+
+
+The ubuntu wiki has info on DKMS with dkms
+https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS
+
+General info on building modules:
+https://www.kernel.org/doc/html/latest/kbuild/modules.html
+
+
