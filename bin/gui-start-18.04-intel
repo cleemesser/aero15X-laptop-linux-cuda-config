@@ -2,15 +2,20 @@
 #sudo service bumblebeed restart
 # tested this with several xorg.conf's including
 # xorg.conf.prime.inprogress
-
+sudo rm /etc/X11/xorg.conf
+sudo ln -s /etc/X11/xorg.conf.works-intel /etc/X11/xorg.conf
 nvidia-off-bbswitch
+
+## direct method
 startx
 
 # first turn on nvidia before starting X or it locks up
 # sudo tee /proc/acpi/bbswitch <<<ON
 # startx
+
+## having a problem with lightdm at the moment
 # or use lightdm
-# sudo service lightdm start
+sudo service lightdm start
 # then can turn it off again
 
 # Don't forget to turn off after X is running
