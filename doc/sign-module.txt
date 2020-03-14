@@ -1,2 +1,5 @@
 https://gist.github.com/Garoe/74a0040f50ae7987885a0bebe5eda1aa
 
+will need to set
+export IGNORE_CC_MISMATCH=1
+
