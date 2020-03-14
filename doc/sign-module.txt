@@ -14,17 +14,17 @@ https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS
 General info on building modules:
 https://www.kernel.org/doc/html/latest/kbuild/modules.html
 
-can create the signing key once with create-uefi-keys.sh 
+https://ubuntu.com/blog/how-to-sign-things-for-secure-boot
 
 
-Install the signing key for the current kernel
+openssl req -config ./openssl.cnf \
+        -new -x509 -newkey rsa:2048 \
+        -nodes -days 36500 -outform DER \
+        -keyout "MOK.priv" \
+        -out "MOK.der"
+openssl x509 -in MOK.der -inform DER -outform PEM -out MOK.pem
+
+
 ```
-cd /lib/modules/`uname -r`/build/certs
-sudo cp ~clee/.ssl/MOK.pem signing_key.pem
-```
-
-TODO: write script to install for all kernels
-
-```
-update-initramfs -u -k all
+kmodsign sha512 MOK.priv MOK.der module.ko module.ko 
 ```
