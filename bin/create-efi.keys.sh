@@ -1,3 +1,10 @@
+# this is generaly should only be run once to create the keys
+# then for secure boot systems, the key must be installed in the UEFI system
+# also the key should be added to the kernel build system
+#  - do a convert-to-pem
+#  - copy to certs/signing_key.pem
+#  this documentation is a work in progress -CLM
+
 # VERY IMPORTANT! After each kernel update or dkms rebuild the modules must be signed again with the script
 # ~/.ssl/sign-all-modules.sh
 
@@ -20,6 +27,12 @@ for filename in /lib/modules/\$(uname -r)/updates/dkms/*.ko; do
     sudo /usr/src/linux-headers-\$(uname -r)/scripts/sign-file sha256 ~/.ssl/MOK.priv ~/.ssl/MOK.der \$filename
     echo "\$filename"
 done
+# sign freshly install NVIDIA drivers
+for filename in /lib/modules/$(uname -r)/kernel/drivers/video/*.ko; do
+    echo "sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ~/.ssl/MOK.priv ~/.ssl/MOK.der $filename"
+    sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ~/.ssl/MOK.priv ~/.ssl/MOK.der $filename
+
+
 EOT
 
 chmod +x ~/.ssl/sign-all-modules.sh
