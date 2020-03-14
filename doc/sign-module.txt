@@ -14,4 +14,17 @@ https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS
 General info on building modules:
 https://www.kernel.org/doc/html/latest/kbuild/modules.html
 
+can create the signing key once with create-uefi-keys.sh 
 
+
+Install the signing key for the current kernel
+```
+cd /lib/modules/`uname -r`/build/certs
+sudo cp ~clee/.ssl/MOK.pem signing_key.pem
+```
+
+TODO: write script to install for all kernels
+
+```
+update-initramfs -u -k all
+```
