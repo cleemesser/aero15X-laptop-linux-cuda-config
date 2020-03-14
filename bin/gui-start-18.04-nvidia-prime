@@ -1,69 +1,9 @@
 #!/usr/bin/env bash
-#sudo service bumblebeed restart
 
 sudo rm /etc/X11/xorg.conf
-sudo ln -s /etc/X11/xorg.conf.running-nvidia /etc/X11/xorg.conf # this did not work to activate the nvidia gpu hdmi screen
-sudo ln -s /etc/X11/xorg.conf.prime.inprogress /etc/X11/xorg.conf
+sudo ln -s /etc/X11/xorg.conf.nvidia-prime /etc/X11/xorg.conf 
 
+export CHRIS_USING_PRIME=1
 # need to have nvidia loaded I assume
 # nvidia-on-bbswitch # not sure if this works
 startx
-
-# need to see if can do this with which config
-# note "(2) Ensure that the nvidia-drm kernel module is loaded. This should normally happen by default, but you can confirm by running `lsmod | grep nvidia-drm` to see if the kernel module is loaded. Run `modprobe nvidia-drm` to load it."
-# from url = http://download.nvidia.com/XFree86/Linux-x86_64/435.17/README/primerenderoffload.html
-
-# tried with xorg.conf.prime.inprogress and it could not do the render offload
-##############################
-# nvidia:  version 435.17
-# prime offload attempt
-
-# Section "ServerLayout"
-#   Identifier "layout"
-#   Screen 0 "iGPU"
-# EndSection
-
-# Section "Device"
-#   Identifier "iGPU"
-#   Driver "modesetting"
-# EndSection
-
-# Section "Screen"
-#   Identifier "iGPU"
-#   Device "iGPU"
-# EndSection
-
-
-
-# Section "ServerLayout"
-#   Identifier "layout"
-#   Option "AllowNVIDIAGPUScreens"
-# EndSection
-# end of xorg.conf.prime.inprogress #############################
-
-
-
-# first turn on nvidia before starting X or it locks up
-# sudo tee /proc/acpi/bbswitch <<<ON
-# startx
-# or use lightdm
-# sudo service lightdm start
-# then can turn it off again
-
-# Don't forget to turn off after X is running
-
-# Configure Graphics Applications to Render Using the GPU Screen
-# To configure a graphics application to be offloaded to the NVIDIA GPU screen, set the environment variable __NV_PRIME_RENDER_OFFLOAD to 1. If the graphics application uses Vulkan, that should be all that is needed. If the graphics application uses GLX, then also set the environment variable __GLX_VENDOR_LIBRARY_NAME to nvidia, so that GLVND loads the NVIDIA GLX driver. NVIDIA's EGL implementation does not yet support PRIME render offload.
-
-# Examples:
-
-# __NV_PRIME_RENDER_OFFLOAD=1 vkcube
-# __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep vendor
-
-# Finer-Grained Control of GLX + OpenGL
-# For GLX + OpenGL, the environment variable __NV_PRIME_RENDER_OFFLOAD_PROVIDER provides finer-grained control. While __NV_PRIME_RENDER_OFFLOAD=1 tells GLX to use the first NVIDIA GPU screen, __NV_PRIME_RENDER_OFFLOAD_PROVIDER can use an RandR provider name to pick a specific NVIDIA GPU screen, using the NVIDIA GPU screen names reported by `xrandr --listproviders`.
-
-# Examples:
-
-# __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxgears
-# __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 __GLX_VENDOR_LIBRARY_NAME=nvidia glxgears
