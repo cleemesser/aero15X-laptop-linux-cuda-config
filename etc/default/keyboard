@@ -1,0 +1,11 @@
+# KEYBOARD CONFIGURATION FILE # Consult the keyboard(5) manual page.  XKBMODEL="pc105" XKBLAYOUT="us"
+# if you change this then do to apply:
+# sudo dpgk-reconfigure keyboard-configuration
+XKBVARIANT=""
+XKBOPTIONS="ctrl:nocaps"
+# "lv3:ralt_al,compose:menu,ctrl:nocaps"
+
+BACKSPACE="guess"
+XKBMODEL="pc105" # this may not be optimal
+XKBLAYOUT="us"
+
