@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+# bbswitch_on
+# rmmod bbswitch #?
 sudo rm /etc/X11/xorg.conf
 sudo ln -s /etc/X11/xorg.conf.nvidia-prime /etc/X11/xorg.conf 
 
