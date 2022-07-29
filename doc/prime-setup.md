@@ -11,6 +11,9 @@ I set the priority to 501
 (in my case I broke things first with an upgrade to 18.04.4 or something which superceeded the 18.04.1 packages
 so I had to go back and manually delete/repalce them -(.
 
+
+
+
 Of course I had to use my signed nvidia driver -- it worked with beta 4.35 and 4.40
 
 
