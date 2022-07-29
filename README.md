@@ -6,6 +6,9 @@ It features big battery, thin body and a maxQ 1070 GTX GPU.
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
 and sound working out of the box. It boots to the graphical display also without problems.
 
+### update 3/28/2020
+I have been pursuing using ubuntu 18.04 with nvidia-prime in the ubuntu18.04 branch. This is working using the 4.15 kernel with the latest (post 4.35 nvidia drivers) and patched Xorg. Bumblebee still can work and turn-off the nvidia gpu if I have to run on battery. Performance is excellent and a restart of X is necessary to switch from intel to nvidia and back.
+
 ### Update 4/22/2018
 
 - I updated the keyboard firmware yesterday under windows "smart update" utility (FW 3.0.8) and tested a few thousand keypresses and got no double outputs :-) Not sure if the firmware made any difference or if I just sometimes double strike myself on this keyboard and did not do any when i was being careful. 
