@@ -6,6 +6,15 @@ It features big battery, thin body and a maxQ 1070 GTX GPU.
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
 and sound working out of the box. It boots to the graphical display also without problems.
 
+### Update 7/10/2022
+Updated to Xubuntu 22.04 LTS with secure boot, linux kernel 5.15.0, 
+after installing fresh to / (holding home to install latest driver did
+```
+sudo ubuntu-drivers install nvidia:515
+sudo apt install mate-optimus ecryptfs-utils keychain
+```
+And everything works with my previously installed code using pytorch 0.4 to 1.12 and cudatoolkits 10.4 to 11.6. Nvidia prime/optimus works without requiring special Xorg server. Awesome!
+
 ### Update 4/22/2018
 
 - I updated the keyboard firmware yesterday under windows "smart update" utility (FW 3.0.8) and tested a few thousand keypresses and got no double outputs :-) Not sure if the firmware made any difference or if I just sometimes double strike myself on this keyboard and did not do any when i was being careful. 
@@ -123,3 +132,31 @@ and sound working out of the box. It boots to the graphical display also without
 - testing cuda 9.0/9.1 - use nvidia "run" file distributions to get these while keeping cuda 8.0 installed as well
   added additional cuda libraries for simulatenous 8.0, 9.0 and 9.1 via ".run" file distribution cuda sdk so as not to interfere with deb based system
 
+
+#### update 2020-05-24  trial update to ubuntu 20.04
+- no problems with install, used default install of nvidia driver 
+
+nvidia-smi
+Sun May 24 15:41:44 2020       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.64       Driver Version: 440.64       CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 107...  Off  | 00000000:01:00.0 Off |                  N/A |
+| N/A   47C    P8     6W /  N/A |     18MiB /  8119MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0       943      G   /usr/lib/xorg/Xorg                            16MiB |
++-----------------------------------------------------------------------------+
+
+- sudo apt install mate-optimus
+  - amazing this worked and it appeared in the xubuntu menu bar
+  - could switch to intel, logout and back in
+  - could go to offload
+  - offload-glx glxgears worked
