@@ -2,9 +2,12 @@
 XKBMODEL="pc105" XKBLAYOUT="us"
 # if you change this then do to apply:
 # sudo dpgk-reconfigure keyboard-configuration
+# sudo service keyboard-setup restart
 XKBVARIANT=""
-XKBOPTIONS="ctrl:nocaps"
+#XKBOPTIONS="ctrl:nocaps"
+XKBOPTIONS="ctrl:swapcaps"
 # "lv3:ralt_al,compose:menu,ctrl:nocaps"
+# "lv3:ralt_al,compose:menu,ctrl:swapcaps"
 
 BACKSPACE="guess"
 XKBMODEL="pc105" # this may not be optimal

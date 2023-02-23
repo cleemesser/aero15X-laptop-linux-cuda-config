@@ -6,6 +6,15 @@ It features big battery, thin body and a maxQ 1070 GTX GPU.
 It boots pretty nicely with ubuntu 16.04.3 (using the hwe 4.10 kernel) with the wifi card, keyboard,
 and sound working out of the box. It boots to the graphical display also without problems.
 
+### Update 7/10/2022   Xubuntu 22.04 awesomeness
+Updated to Xubuntu 22.04 LTS with secure boot, linux kernel 5.15.0, 
+after installing fresh to / (holding home to install latest driver did
+```
+sudo ubuntu-drivers install nvidia:515
+sudo apt install mate-optimus ecryptfs-utils keychain
+```
+And everything works with my previously installed machine learning code using pytorch 0.4 to 1.12 and conda-installed cudatoolkits 10.4 to 11.6. Nvidia prime/optimus works without requiring special Xorg server.
+
 ### update 3/28/2020
 I have been pursuing using ubuntu 18.04 with nvidia-prime in the ubuntu18.04 branch. This is working using the 4.15 kernel with the latest (post 4.35 nvidia drivers) and patched Xorg. Bumblebee still can work and turn-off the nvidia gpu if I have to run on battery. Performance is excellent and a restart of X is necessary to switch from intel to nvidia and back.
 

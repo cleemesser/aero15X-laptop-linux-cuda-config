@@ -7,5 +7,7 @@ xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Two-Finger Scrolling" 0, 0
 # Finger originally was 1, 1, 0
 # xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 50, 90, 255 # too high
 #xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 10, 20, 30
-xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 20, 40, 90
+
+# this might be a little too stiff or slow to respond
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 10, 40, 100
 
