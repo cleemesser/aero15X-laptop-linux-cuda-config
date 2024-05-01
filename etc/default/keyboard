@@ -1,4 +1,5 @@
-# KEYBOARD CONFIGURATION FILE # Consult the keyboard(5) manual page.  XKBMODEL="pc105" XKBLAYOUT="us"
+# KEYBOARD CONFIGURATION FILE # Consult the keyboard(5) manual page.
+XKBMODEL="pc105" XKBLAYOUT="us"
 # if you change this then do to apply:
 # sudo dpgk-reconfigure keyboard-configuration
 # sudo service keyboard-setup restart

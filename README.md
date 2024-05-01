@@ -67,7 +67,7 @@ I have been pursuing using ubuntu 18.04 with nvidia-prime in the ubuntu18.04 bra
   1Gbit/s
  
 - Wirelss interface
-  product: Intel Corporation
+  product: Intel Corporation Dual Band Wireless-AC 8265
   logcial name: wlp3s0
   
 ### overview of configuration
