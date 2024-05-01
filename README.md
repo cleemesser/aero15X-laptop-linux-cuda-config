@@ -11,8 +11,10 @@ Updated to Xubuntu 22.04 LTS with secure boot, linux kernel 5.15.0,
 after installing fresh to / (holding home to install latest driver did
 ```
 sudo ubuntu-drivers install nvidia:515
-sudo apt install mate-optimus ecryptfs-utils keychain
+sudo apt install mate-optimus ecryptfs-utils keychain network-manager-openconnect
+# network-manager-openconnect-gnome
 ```
+
 And everything works with my previously installed machine learning code using pytorch 0.4 to 1.12 and conda-installed cudatoolkits 10.4 to 11.6. Nvidia prime/optimus works without requiring special Xorg server.
 
 ### update 3/28/2020
