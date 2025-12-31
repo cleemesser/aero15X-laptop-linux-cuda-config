@@ -4,7 +4,7 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 # on ubuntu 22.04
-# dependences: sudo apt i3-wm i3lock suckless-tools  j4-dmenu-desktop
+# dependences: sudo apt install i3-wm i3lock suckless-tools  j4-dmenu-desktop
 # suckless-tools includes dmenu, slock and other simple X commands 
 
 # i3 config file (v4)
