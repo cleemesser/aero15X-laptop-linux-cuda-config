@@ -1,3 +1,7 @@
+-- windows version of file
+-- because I often access linux from windows using wezterm
+-- c:\Users\clee\.wezterm.lua
+
 local wezterm = require 'wezterm'
 local config = {}
 
@@ -7,10 +11,11 @@ config.enable_csi_u_key_encoding = true
 config.allow_win32_input_mode = false
 config.audible_bell = 'Disabled'
 
--- Set Ctrl+F2 as the leader key, avoid Ctrl+t as used for my tmux
+-- Set Ctrl+F1 as the leader key, avoid Ctrl+t as used for my tmux
+-- set Ctrl+F2 as the launch menu key
 -- note emacs seems to grab this key so not working when have it running in terminal on wezterm
 
-config.leader = { key = 'F2', mods = 'CTRL', timeout_milliseconds = 1000 }
+config.leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 
 config.keys = {-- CTRL-SHIFT-l activates the debug overlay
@@ -36,8 +41,8 @@ config.keys = {-- CTRL-SHIFT-l activates the debug overlay
     mods = 'CTRL|SHIFT',
     action = wezterm.action.PasteFrom 'PrimarySelection' },
   {
-      key = 'F1',
-      mods = 'CTRL', -- might want to use 'CTRL' as this is less likely to interfere with other terminal bindings, using SHIFT F1 (S-F1) in tmux
+      key = 'F2',
+      mods = 'CTRL', -- might want to use 'CTRL' as this is less likely to interfere with other terminal bindings, using SHIFT F2 (S-F2) in tmux
       action = wezterm.action.ShowLauncher,
     },
       -- Split horizontally with Leader + |
