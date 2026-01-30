@@ -1,0 +1,18 @@
+# For Xfce, we add a directory to XDG_DATA_DIRS
+# to allow the admin to set, for example, defaults.list properly
+BASESTARTUP=$(basename "$STARTUP" | cut -d\  -f1)
+if [ "$BASESTARTUP" = x-session-manager ]; then
+    BASESTARTUP=$(basename $(readlink /etc/alternatives/x-session-manager))
+fi
+case "$BASESTARTUP" in
+  xfce4-session|startxfce4)
+    # We prepend /usr/share/xfce4 since its defaults.list actually points 
+    # to /etc so it is configurable.
+    if [ -z "$XDG_DATA_DIRS" ]; then
+      XDG_DATA_DIRS=/usr/share/xfce4:/usr/local/share/:/usr/share/
+    else
+      XDG_DATA_DIRS=/usr/share/xfce4:"$XDG_DATA_DIRS"
+    fi
+    export XDG_DATA_DIRS
+    ;;
+esac

@@ -1,0 +1,5 @@
+#!/bin/bash
+# there is an argument about whether this requires GRUB_DEFAULT=saved
+# to work in /etc/default/grub
+#sudo grub-reboot "$(sudo grep -i ubuntu /boot/grub/grub.cfg|cut -d"'" -f2)" && sudo reboot
+sudo grub-reboot "Ubuntu" && sudo reboot

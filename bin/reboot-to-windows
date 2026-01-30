@@ -1,0 +1,8 @@
+#!/bin/bash
+# there is an argument about whether this requires GRUB_DEFAULT=saved
+# to work in /etc/default/grub
+sudo grub-reboot "$(sudo grep -i windows /boot/grub/grub.cfg|cut -d"'" -f2)" && sudo reboot
+
+# currently, I have GRUB_DEFAULT=4 and I think this will reboot to windows by default
+# but I think it will reboot to ubuntu with
+# "sudo grub-reboot "Ubuntu" && sudo reboot"

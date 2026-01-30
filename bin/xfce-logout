@@ -1,0 +1,18 @@
+# for xfce /xubuntu
+xfce4-session-logout --logout
+# xfce4-session-logout --fast   # does not save session
+# for gnome desktop
+# gnome-session-quit
+
+# before needed to do this
+# dbus-send --session --type=method_call --print-reply --dest=org.gnome.SessionManager /org/gnome/SessionManager org.gnome.SessionManager.Logout uint32:1
+
+# for i3wm
+# i3-
+
+# don't end session
+# dm-tool switch-to-greeter
+
+# qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0
+
+# sudo service lightdm restart
