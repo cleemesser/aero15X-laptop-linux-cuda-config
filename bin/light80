@@ -1,3 +1,2 @@
 #!/bin/sh
-light -S 80
-
+sudo light -S 80
