@@ -1,6 +1,7 @@
 #!/bin/sh
 xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1
 xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Detection" 1
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Dimensions" 8, 20 # 
 # not sure if other things like noise cancellation would be useful
 xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Two-Finger Scrolling" 0, 0
 # low, high, press
@@ -8,6 +9,33 @@ xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Two-Finger Scrolling" 0, 0
 # xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 50, 90, 255 # too high
 #xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 10, 20, 30
 
+### here I am trying to fix what is not working when I start via i3
 # this might be a little too stiff or slow to respond
-xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 10, 40, 100
+#xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 10, 40, 100
 
+
+# -	Synaptics Finger (343):	10, 40, 100
+# +	Synaptics Finger (343):	1, 1, 0
+
+#xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" <low>, <high>, <press> ?
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 1, 1, 0
+
+
+# -	Synaptics Two-Finger Scrolling (353):	0, 0
+# +	Synaptics Two-Finger Scrolling (353):	1, 0
+# was 0, 0
+xinput set-prop "ETPS/2 Elantech Touchpad" 353 1 0
+
+# -	Synaptics Off (355):	0
+# +	Synaptics Off (355):	1
+xinput set-prop "ETPS/2 Elantech Touchpad" 355 1
+# -	Synaptics Tap Action (358):	2, 3, 0, 0, 1, 3, 0
+# +	Synaptics Tap Action (358):	2, 3, 0, 0, 1, 3, 2
+
+# -	Synaptics Palm Detection (364):	1
+# -	Synaptics Palm Dimensions (365):	3, 5
+# +	Synaptics Palm Detection (364):	0
+# +	Synaptics Palm Dimensions (365):	10, 200
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Detection" 1
+# xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Dimensions" 10, 200
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Dimensions" 8, 20 # acceptable
